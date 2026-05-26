@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Erro')}"></head>
+<body>
+<nav th:replace="~{layout :: nav}"></nav>
+
+<main class="conteudo estreito">
+    <h1>Algo nao foi encontrado</h1>
+    <p th:text="${mensagemErro}">Mensagem de erro.</p>
+    <a class="botao" th:href="@{/index}">Voltar ao catalogo</a>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>

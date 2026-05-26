@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Catalogo BYD')}"></head>
+<body>
+<nav th:replace="~{layout :: nav}"></nav>
+<section th:replace="~{layout :: mensagens}"></section>
+
+<main class="conteudo">
+    <header class="cabecalho">
+        <div>
+            <h1>Catalogo BYD</h1>
+            <p>Modelos eletrificados disponiveis na concessionaria.</p>
+        </div>
+        <a class="botao" th:href="@{/verCarrinho}">
+            Carrinho (<span th:text="${quantidadeCarrinho}">0</span>)
+        </a>
+    </header>
+
+    <section class="grade">
+        <article class="card" th:each="carro : ${carros}">
+            <img th:src="@{${carro.imgUrl}}" th:alt="${carro.nome}">
+            <h2 th:text="${carro.nome}">BYD</h2>
+            <p th:text="${carro.descricao}">Descricao</p>
+            <strong>R$ <span th:text="${#numbers.formatDecimal(carro.preco, 1, 'POINT', 2, 'COMMA')}">0,00</span></strong>
+            <div class="acoes">
+                <a th:href="@{/detalhes/{id}(id=${carro.id})}">Detalhes</a>
+                <a th:href="@{/adicionarCarrinho(id=${carro.id})}">Adicionar</a>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>

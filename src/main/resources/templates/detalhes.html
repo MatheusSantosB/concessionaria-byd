@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Detalhes')}"></head>
+<body>
+<nav th:replace="~{layout :: nav}"></nav>
+
+<main class="conteudo detalhes">
+    <img th:src="@{${carro.imgUrl}}" th:alt="${carro.nome}">
+    <section>
+        <h1 th:text="${carro.nome}">Carro</h1>
+        <p th:text="${carro.descricao}">Descricao</p>
+        <ul>
+            <li><strong>Codigo:</strong> <span th:text="${carro.codigo}">BYD</span></li>
+            <li><strong>Preco:</strong> R$ <span th:text="${carro.preco}">0</span></li>
+            <li><strong>Autonomia:</strong> <span th:text="${carro.autonomia}">0</span></li>
+            <li><strong>Potencia:</strong> <span th:text="${carro.potencia}">0</span></li>
+        </ul>
+        <a class="botao" th:href="@{/adicionarCarrinho(id=${carro.id})}">Adicionar ao carrinho</a>
+    </section>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>

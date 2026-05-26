@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Administracao')}"></head>
+<body>
+<nav th:replace="~{layout :: nav}"></nav>
+<section th:replace="~{layout :: mensagens}"></section>
+
+<main class="conteudo">
+    <header class="cabecalho">
+        <div>
+            <h1>Administracao</h1>
+            <p>Lista completa, incluindo registros removidos logicamente.</p>
+        </div>
+        <a class="botao" th:href="@{/cadastro}">Novo carro</a>
+    </header>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Codigo</th>
+            <th>Preco</th>
+            <th>Status</th>
+            <th>Acoes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="carro : ${carros}">
+            <td th:text="${carro.nome}">Nome</td>
+            <td th:text="${carro.codigo}">Codigo</td>
+            <td>R$ <span th:text="${carro.preco}">0</span></td>
+            <td th:text="${carro.isDeleted == null ? 'Ativo' : 'Deletado'}">Ativo</td>
+            <td class="acoes-tabela">
+                <a th:href="@{/editar(id=${carro.id})}">Editar</a>
+                <a th:href="@{/deletar(id=${carro.id})}">Deletar</a>
+                <a th:href="@{/restaurar(id=${carro.id})}">Restaurar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>

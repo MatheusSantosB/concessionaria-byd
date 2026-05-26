@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240">
+  <rect width="520" height="240" fill="#ffffff"/>
+  <path d="M72 142h52l38-38h190l48 38h48v34H72z" fill="#f4f4f4" stroke="#000000" stroke-width="8"/>
+  <circle cx="158" cy="178" r="28" fill="#ffffff" stroke="#000000" stroke-width="8"/>
+  <circle cx="380" cy="178" r="28" fill="#ffffff" stroke="#000000" stroke-width="8"/>
+  <text x="260" y="82" text-anchor="middle" font-family="Arial" font-size="34" fill="#000000">BYD DOLPHIN</text>
+</svg>

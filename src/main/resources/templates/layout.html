@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Concessionaria BYD</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+<nav class="topo" th:fragment="nav">
+    <a th:href="@{/index}" class="marca">BYD Concessionaria</a>
+    <div class="menu">
+        <a th:href="@{/index}">Catalogo</a>
+        <a th:href="@{/admin}" sec:authorize="hasRole('ADMIN')">Admin</a>
+        <a th:href="@{/cadastro}" sec:authorize="hasRole('ADMIN')">Cadastro</a>
+        <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <span sec:authentication="name">usuario</span>
+            <button type="submit">Sair</button>
+        </form>
+    </div>
+</nav>
+
+<section class="alerta" th:fragment="mensagens" th:if="${mensagem != null}">
+    <p th:text="${mensagem}"></p>
+</section>
+
+<footer th:fragment="footer">
+    <p>Projeto da unidade 2 - Programacao Web</p>
+</footer>
+</body>
+</html>

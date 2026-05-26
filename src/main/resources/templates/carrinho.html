@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Carrinho')}"></head>
+<body>
+<nav th:replace="~{layout :: nav}"></nav>
+
+<main class="conteudo">
+    <header class="cabecalho">
+        <div>
+            <h1>Carrinho</h1>
+            <p>
+                <span th:text="${quantidadeCarrinho}">0</span> item(ns) selecionado(s).
+                Total: R$ <strong th:text="${#numbers.formatDecimal(totalCarrinho, 1, 'POINT', 2, 'COMMA')}">0,00</strong>
+            </p>
+        </div>
+    </header>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Codigo</th>
+            <th>Autonomia</th>
+            <th>Potencia</th>
+            <th>Preco</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="carro : ${carros}">
+            <td><img class="miniatura" th:src="@{${carro.imgUrl}}" th:alt="${carro.nome}"></td>
+            <td th:text="${carro.nome}">Nome</td>
+            <td th:text="${carro.codigo}">Codigo</td>
+            <td th:text="${carro.autonomia}">Autonomia</td>
+            <td th:text="${carro.potencia}">Potencia</td>
+            <td>R$ <span th:text="${#numbers.formatDecimal(carro.preco, 1, 'POINT', 2, 'COMMA')}">0,00</span></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <section class="pagamento">
+        <h2>Forma de pagamento</h2>
+        <p>Escolha como deseja finalizar a compra dos automoveis selecionados.</p>
+        <div class="acoes">
+            <a th:href="@{/finalizarCompra(pagamento='Pix')}">Pagar no Pix</a>
+            <a th:href="@{/finalizarCompra(pagamento='Financiado')}">Pagar financiado</a>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>
